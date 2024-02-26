@@ -1,5 +1,4 @@
-
-package com.example.demo.model;
+package com.example.StudentManager2.model;
 
 public class Student {
     private String id;

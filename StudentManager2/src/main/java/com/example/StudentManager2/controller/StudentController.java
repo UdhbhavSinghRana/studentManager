@@ -1,6 +1,8 @@
+package com.example.StudentManager2.controller;
 
+import com.example.StudentManager2.model.Student;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.model.Student;
+
 import java.util.*;
 
 @RestController
