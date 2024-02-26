@@ -1,13 +1,13 @@
-package com.example.StudentManager2;
+package com.example.SutdentApplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StudentManager2Application {
+public class SutdentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StudentManager2Application.class, args);
+		SpringApplication.run(SutdentApplication.class, args);
 	}
 
 }
