@@ -1,6 +1,11 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.2'
+    id 'org.springframework.boot' version '2.6.5'
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://plugins.gradle.org/m2/' } // Add Spring plugins repository
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -8,10 +13,6 @@ apply plugin: 'io.spring.dependency-management'
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'

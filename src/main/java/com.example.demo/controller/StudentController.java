@@ -1,33 +1,35 @@
+
+import org.springframework.web.bind.annotation.*;
+import com.example.demo.model.Student;
+import java.util.*;
+
 @RestController
+public class StudentController {
 
-
-public Class StudentController {
-
-    Map<String, Student> mapIdToStudent;
-    
-    Map<String, Student> mapUniToStudent;
+    Map<String, Student> mapIdToStudent = new HashMap<>();
+    Map<String, List<Student>> mapUniToStudent = new HashMap<>();
 
     @PostMapping("/addStudent")
-    public String addStudent(@RequestBody String name,
-                            @RequestBody int age,
-                            @RequestBody String adhar,
-                            @RequestBody String Uni) {
+    public String addStudent(@RequestBody Student student) {
         String id = UUID.randomUUID().toString();
-        Student student = new Student(id, name, age, adhar, Uni);
+        student.setId(id);
         mapIdToStudent.put(id, student);
 
-        List<Student> students = mapUniToStudent.getOrDefault(Uni, new ArrayList());
-        mapUniToStudent.put(Uni, students);
+        List<Student> students = mapUniToStudent.getOrDefault(student.getUni(), new ArrayList<>());
+        students.add(student);
+        mapUniToStudent.put(student.getUni(), students);
+
         return id;
     }
 
     @GetMapping("/getStudentsByUni")
-    public List<Student> getStudentsByUni(String uni) {
-        return mapUniToStudent.getOrDefault(uni, null);
+    public List<Student> getStudentsByUni(@RequestParam String uni) {
+        return mapUniToStudent.getOrDefault(uni, Collections.emptyList());
     }
 
     @GetMapping("/getStudentById")
-    public Student getStudentById(String id) {
+    public Student getStudentById(@RequestParam String id) {
         return mapIdToStudent.getOrDefault(id, null);
     }
 }
+
